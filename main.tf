@@ -5,6 +5,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   size                            = var.size
   admin_username                  = var.admin_username
   admin_password                  = var.disable_password_authentication ? null : var.admin_password
+  custom_data                     = var.custom_data_script
   network_interface_ids           = [for nic in azurerm_network_interface.nic : nic.id]
   availability_set_id             = var.availability_set_id
   source_image_id                 = length(var.source_image_reference) == 0 ? var.source_image_id : null

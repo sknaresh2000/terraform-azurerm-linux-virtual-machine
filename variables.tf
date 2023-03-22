@@ -25,6 +25,12 @@ variable "admin_username" {
   default     = "azureuser"
 }
 
+variable "custom_data_script" {
+  type        = string
+  description = "The Base64-Encoded Custom Data which should be used for this Virtual Machine."
+  default     = null
+}
+
 variable "admin_password" {
   type        = string
   description = "The Password which should be used for the local-administrator on this Virtual Machine. If not provided, disable_password_authentication should be set to true and keyvault id should be provided"
