@@ -51,7 +51,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
 }
 
 resource "azurerm_network_interface" "nic" {
-  for_each                      = var.network_config
+  for_each                      = var.network_interface_ids == null ? var.network_config : {}
   name                          = each.value.name
   location                      = var.location
   resource_group_name           = var.resource_group_name
