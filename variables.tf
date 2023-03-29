@@ -141,3 +141,9 @@ variable "key_vault_id" {
   description = "ID of the KeyVault to store the private key of virtual machine. Required if disable_password_authentication is true"
   default     = null
 }
+
+variable "network_interface_ids" {
+  type        = list(string)
+  description = "A list of Network Interface IDs which should be attached to this Virtual Machine. If ID's are not provided, the module will create and attach a NIC to the virtual machine."
+  default     = null
+}
