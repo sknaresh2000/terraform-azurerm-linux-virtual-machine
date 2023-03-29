@@ -57,4 +57,5 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_id"></a> [id](#output\_id) | The ID of this virtual machine |
+| <a name="output_principal_id"></a> [principal\_id](#output\_principal\_id) | The Principal ID associated with this Managed Service Identity. |
 | <a name="output_private_ip_address"></a> [private\_ip\_address](#output\_private\_ip\_address) | The Primary Private IP Address assigned to this Virtual Machine. |
