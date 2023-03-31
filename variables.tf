@@ -34,7 +34,6 @@ variable "custom_data_script" {
 variable "admin_password" {
   type        = string
   description = "The Password which should be used for the local-administrator on this Virtual Machine. If not provided, disable_password_authentication should be set to true and keyvault id should be provided"
-  default     = null
 }
 
 variable "disable_password_authentication" {
@@ -136,14 +135,14 @@ variable "data_disk_config" { //Mark it as null if any of the below parameters a
   default     = {}
 }
 
-variable "key_vault_id" {
-  type        = string
-  description = "ID of the KeyVault to store the private key of virtual machine. Required if disable_password_authentication is true"
-  default     = null
-}
-
 variable "network_interface_ids" {
   type        = list(string)
   description = "A list of Network Interface IDs which should be attached to this Virtual Machine. If ID's are not provided, the module will create and attach a NIC to the virtual machine."
+  default     = null
+}
+
+variable "public_key" {
+  type        = string
+  description = "Public key for the virtual machine if disable password authentication is true"
   default     = null
 }

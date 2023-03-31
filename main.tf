@@ -20,7 +20,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     for_each = var.disable_password_authentication ? [1] : []
     content {
       username   = var.admin_username
-      public_key = tls_private_key.tls[0].public_key_openssh
+      public_key = var.public_key
     }
   }
 
@@ -86,17 +86,4 @@ resource "azurerm_virtual_machine_data_disk_attachment" "disk_attachment" {
   virtual_machine_id = azurerm_linux_virtual_machine.vm.id
   lun                = each.value.lun
   caching            = each.value.caching
-}
-
-resource "tls_private_key" "tls" {
-  count     = var.disable_password_authentication ? 1 : 0
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
-resource "azurerm_key_vault_secret" "secret" {
-  count        = var.disable_password_authentication ? 1 : 0
-  name         = "${var.name}-key"
-  value        = tls_private_key.tls[0].private_key_openssh
-  key_vault_id = var.key_vault_id
 }
