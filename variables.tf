@@ -34,6 +34,7 @@ variable "custom_data_script" {
 variable "admin_password" {
   type        = string
   description = "The Password which should be used for the local-administrator on this Virtual Machine. If not provided, disable_password_authentication should be set to true and keyvault id should be provided"
+  default     = null
 }
 
 variable "disable_password_authentication" {
